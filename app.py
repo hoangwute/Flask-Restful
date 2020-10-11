@@ -18,12 +18,13 @@ api = Api(app)
 jwt = JWT(app, authenticate, identity)
 
 api.add_resource(Store, '/store/<string:name>')
-api.add_resource(Item, '/item/<string:name>') 
+api.add_resource(Item, '/item/<string:name>')
 api.add_resource(ItemList, '/items')
-api.add_resource(StoreList, '/stores') 
+api.add_resource(StoreList, '/stores')
 api.add_resource(UserRegister, '/register')
 
-if __name__ == '__main__': #prevent app from running if other classes import something from app.py
-	from db import db
-	db.init_app(app)
-	app.run(port=5000, debug=True)
+if __name__ == '__main__':  # prevent app from running if other classes import something from app.py
+    from db import db
+
+    db.init_app(app)
+    app.run(port=5000, debug=True)
