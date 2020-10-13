@@ -1,7 +1,7 @@
 from flask_restful import Resource, reqparse
 from flask_jwt import jwt_required
 from models.item import ItemModel
-
+import time
 
 class Item(Resource):
     parser = reqparse.RequestParser()
@@ -62,3 +62,9 @@ class Item(Resource):
 class ItemList(Resource):
     def get(self):
         return {'items': [item.json() for item in ItemModel.query.all()]}
+
+class Test(Resource):
+    def get(self):
+        time.sleep(40)
+        return "sleep done"
+
